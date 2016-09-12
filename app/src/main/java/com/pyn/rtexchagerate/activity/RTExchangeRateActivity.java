@@ -1,15 +1,18 @@
 package com.pyn.rtexchagerate.activity;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v4.app.Fragment;
 
-import com.pyn.rtexchagerate.R;
+import com.pyn.rtexchagerate.fragment.RTExchangeRateFragment;
 
-public class RTExchangeRateActivity extends AppCompatActivity {
+public class RTExchangeRateActivity extends SingleFragmentActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rtexchange_rate);
+    protected Fragment createFragment() {
+        return RTExchangeRateFragment.newInstance();
+    }
+
+    @Override
+    protected void initDatas() {
+
     }
 }
