@@ -3,7 +3,6 @@ package com.pyn.rtexchagerate.utils;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
-import android.os.Handler;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 
@@ -18,15 +17,7 @@ import com.pyn.rtexchagerate.application.RTCRApplication;
 public class UIUtils {
 
     public static Context getContext() {
-        return RTCRApplication.getContext();
-    }
-
-    public static Handler getHandler() {
-        return RTCRApplication.getHandler();
-    }
-
-    public static int getMainThreadId() {
-        return RTCRApplication.getMainThreadId();
+        return RTCRApplication.getInstance();
     }
 
     /**
@@ -121,33 +112,4 @@ public class UIUtils {
         return View.inflate(getContext(), id, null);
     }
 
-    /**
-     * 判断是否运行在主线程
-     *
-     * @return
-     */
-    public static boolean isRunOnUIThread() {
-        // 获取当前线程id, 如果当前线程id和主线程id相同, 那么当前就是主线程
-        int myTid = android.os.Process.myTid();
-        if (myTid == getMainThreadId()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * 运行在主线程
-     *
-     * @param r
-     */
-    public static void runOnUIThread(Runnable r) {
-        if (isRunOnUIThread()) {
-            // 已经是主线程, 直接运行
-            r.run();
-        } else {
-            // 如果是子线程, 借助handler让其运行在主线程
-            getHandler().post(r);
-        }
-    }
 }

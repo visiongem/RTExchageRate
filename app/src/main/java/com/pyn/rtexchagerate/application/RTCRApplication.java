@@ -2,9 +2,7 @@ package com.pyn.rtexchagerate.application;
 
 import android.app.Activity;
 import android.app.Application;
-import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.DisplayMetrics;
 
 import com.orhanobut.logger.Logger;
@@ -18,33 +16,23 @@ public class RTCRApplication extends Application {
 
     private static final String TAG = "RTCRApplication";
 
-    private static Context mContext;
-    private static Handler mHandler;
-    private static int mainThreadId;
-
-    private static RTCRApplication instance;
+    private static RTCRApplication mInstance;
     // 当前屏幕的宽度
     public int screenW = 0;
     public int screenH = 0;
 
-    // 单例模式获取唯一MyApplication实例
+    // 获取Application实例
     public static RTCRApplication getInstance(){
-
-        if(instance == null){
-            instance = new RTCRApplication();
-        }
-        return instance;
+        return mInstance;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        instance = this;
-
-        mContext = getApplicationContext();
-        mHandler = new Handler();
-        mainThreadId = android.os.Process.myTid();
+        if (mInstance == null) {
+            mInstance = this;
+        }
 
         // 得到屏幕宽度和高度
         DisplayMetrics dm = getResources().getDisplayMetrics();
@@ -91,17 +79,5 @@ public class RTCRApplication extends Application {
                 Logger.v("onActivityDestroyed");
             }
         });
-    }
-
-    public static Context getContext() {
-        return mContext;
-    }
-
-    public static Handler getHandler() {
-        return mHandler;
-    }
-
-    public static int getMainThreadId() {
-        return mainThreadId;
     }
 }
