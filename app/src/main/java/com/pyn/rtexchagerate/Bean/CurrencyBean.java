@@ -1,7 +1,7 @@
 package com.pyn.rtexchagerate.Bean;
 
 /**
- * describtion:
+ * describtion: 实时汇率查询换算实体类
  * Created by pengyn on 2016/9/12.
  */
 public class CurrencyBean {

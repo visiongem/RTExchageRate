@@ -2,6 +2,7 @@ package com.pyn.rtexchagerate.activity;
 
 import android.support.v4.app.Fragment;
 
+import com.pyn.rtexchagerate.base.SingleFragmentActivity;
 import com.pyn.rtexchagerate.fragment.RTExchangeRateFragment;
 
 public class RTExchangeRateActivity extends SingleFragmentActivity {

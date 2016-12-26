@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'android-apt'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion 25
@@ -28,13 +28,13 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.0.1'
     testCompile 'junit:junit:4.12'
 
-    // butterknife
-    compile 'com.jakewharton:butterknife:8.2.1'
-    apt 'com.jakewharton:butterknife-compiler:8.2.1'
-    // logger    https://github.com/orhanobut/logger
+    // butterknife (https://github.com/JakeWharton/butterknife)
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    // logger (https://github.com/orhanobut/logger)
     compile 'com.orhanobut:logger:1.15'
 
-    // rxjava
+    // rxjava (https://github.com/ReactiveX/RxAndroid)
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'io.reactivex:rxjava:1.1.6'
     // retrofit
@@ -43,4 +43,6 @@ dependencies {
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    // 安全简单的键值对数据存储库。使用AES来加密私密数据，SharedPreferences来存储。可以存储任意类型的数据或者数据集合(List)。
+    compile 'com.orhanobut:hawk:2.0.1'
 }

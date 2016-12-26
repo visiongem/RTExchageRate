@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 
-import com.pyn.rtexchagerate.application.RTCRApplication;
+import com.pyn.rtexchagerate.base.RTCRApplication;
 
 /**
  * ui的工具类

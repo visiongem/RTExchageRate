@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pyn.rtexchagerate.R;
-import com.pyn.rtexchagerate.application.RTCRApplication;
+import com.pyn.rtexchagerate.base.RTCRApplication;
 
 /**
  * 对app中所有的toast进行管理
@@ -20,54 +20,66 @@ import com.pyn.rtexchagerate.application.RTCRApplication;
  */
 public class ToastMaker {
 
+    private static Toast sToast;
+    private static TextView sContentTv;
+
     public static void showShortToast(String msg) {
-        showCustomTranslucentToast(RTCRApplication.getInstance(), msg, Toast.LENGTH_SHORT);
+        showCustomToast(UIUtils.getContext(), msg, Toast.LENGTH_SHORT);
     }
 
     public static void showShortToast(int msgId) {
-        showCustomTranslucentToast(RTCRApplication.getInstance(), msgId, Toast.LENGTH_SHORT);
+        showCustomToast(UIUtils.getContext(), msgId, Toast.LENGTH_SHORT);
     }
 
-    public static void showLongToast(String msg){
-        showCustomTranslucentToast(RTCRApplication.getInstance(), msg, Toast.LENGTH_LONG);
+    public static void showLongToast(String msg) {
+        showCustomToast(UIUtils.getContext(), msg, Toast.LENGTH_LONG);
     }
 
-    public static void showLongToast(int msgId){
-        showCustomTranslucentToast(RTCRApplication.getInstance(), msgId, Toast.LENGTH_LONG);
+    public static void showLongToast(int msgId) {
+        showCustomToast(UIUtils.getContext(), msgId, Toast.LENGTH_LONG);
     }
 
     /**
      * 创建运行在UI线程中的Toast
+     *
      * @param activity
-     * @param stringId
+     * @param msg
      */
-    public static void showToastInUiThread(final Activity activity, final int stringId){
-        if(activity != null){
+    public static void showToastInUiThread(final Activity activity, final String msg) {
+        if (activity != null) {
             activity.runOnUiThread(new Runnable() {
-                @Override
                 public void run() {
-                    showCustomTranslucentToast(activity, stringId);
+                    showCustomToast(activity, msg);
                 }
             });
         }
     }
 
-    private static void showCustomTranslucentToast(Context context, int msgId){
-        final String msg = context.getResources().getString(msgId);
-        showCustomTranslucentToast(context, msg);
+    public static void showToastInUiThread(final Activity activity, final int stringId) {
+        if (activity != null) {
+            activity.runOnUiThread(new Runnable() {
+                public void run() {
+                    showCustomToast(activity, stringId);
+                }
+            });
+        }
     }
 
-    private static void showCustomTranslucentToast(Context context, String msg){
-        showCustomTranslucentToast(context, msg, Toast.LENGTH_SHORT);
+    private static void showCustomToast(Context context, int msgId) {
+        final String msg = UIUtils.getString(msgId);
+        showCustomToast(context, msg);
     }
 
-    private static void showCustomTranslucentToast(Context context, int msgId, int duration){
-        final String msg = context.getResources().getString(msgId);
-        showCustomTranslucentToast(context, msg, duration);
+    private static void showCustomToast(Context context, String msg) {
+        showCustomToast(context, msg, Toast.LENGTH_SHORT);
     }
 
-    private static void showCustomTranslucentToast(final Context context, final String msg, final int duration) {
+    private static void showCustomToast(Context context, int msgId, int duration) {
+        final String msg = UIUtils.getString(msgId);
+        showCustomToast(context, msg, duration);
+    }
 
+    private static void showCustomToast(final Context context, final String msg, final int duration) {
         if (context == null) {
             return;
         }
@@ -84,18 +96,20 @@ public class ToastMaker {
     }
 
     private static void showToast(Context context, String msg, int duration) {
-
         if (null != context) {
-            LayoutInflater inflater = LayoutInflater.from(context);
-            View layout = inflater.inflate(R.layout.toast_layout, null);
-            TextView content = (TextView) layout.findViewById(R.id.toast_content);
-            content.setText(msg);
-
-            Toast toast = new Toast(context);
-            toast.setGravity(Gravity.CENTER, 0, RTCRApplication.getInstance().screenH / 4);
-            toast.setDuration(duration);
-            toast.setView(layout);
-            toast.show();
+            if (sToast == null) {
+                sToast = new Toast(context);
+                LayoutInflater inflater = LayoutInflater.from(context);
+                View layout = inflater.inflate(R.layout.common_toast, null);
+                sContentTv = (TextView) layout.findViewById(R.id.tv_toast_content);
+                sContentTv.setText(msg);
+                sToast.setGravity(Gravity.CENTER, 0, RTCRApplication.getInstance().screenH / 4);
+                sToast.setDuration(duration);
+                sToast.setView(layout);
+            }else {
+                sContentTv.setText(msg);
+            }
+            sToast.show();
         }
     }
 }
