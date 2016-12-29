@@ -1,10 +1,11 @@
 package com.pyn.rtexchagerate.fragment;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.pyn.rtexchagerate.R;
+import com.pyn.rtexchagerate.utils.ToastMaker;
 import com.pyn.rtexchagerate.view.ClearEditText;
 
 import butterknife.BindView;
@@ -20,8 +21,8 @@ public class RTExchangeRateFragment extends BaseFragment {
     ClearEditText cedtOneNum;
     @BindView(R.id.tv_two_num)
     TextView tvTwoNum;
-    @BindView(R.id.img_exchage)
-    ImageView imgExchange;
+    @BindView(R.id.refresh_rate)
+    SwipeRefreshLayout swipeRefresh;
 
     public static RTExchangeRateFragment newInstance() {
         RTExchangeRateFragment fragment = new RTExchangeRateFragment();
@@ -36,9 +37,23 @@ public class RTExchangeRateFragment extends BaseFragment {
     @Override
     protected void initData() {
 
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshDatas();
+            }
+        });
     }
 
-    @OnClick({R.id.tv_one_name, R.id.tv_two_name, R.id.img_exchage})
+    /**
+     * 刷新当前汇率换算
+     */
+    private void refreshDatas() {
+        ToastMaker.showShortToast("刷新喽");
+        swipeRefresh.setRefreshing(false);
+    }
+
+    @OnClick({R.id.tv_one_name, R.id.tv_two_name})
     public void viewsOnclick(View view) {
         switch (view.getId()) {
             case R.id.tv_one_name:
@@ -47,13 +62,6 @@ public class RTExchangeRateFragment extends BaseFragment {
             case R.id.tv_two_name:
                 break;
 
-            case R.id.img_exchage:
-
-                String temp = tvOneName.getText().toString();
-                tvOneName.setText(tvTwoName.getText().toString());
-                tvTwoName.setText(temp);
-
-                break;
         }
     }
 }

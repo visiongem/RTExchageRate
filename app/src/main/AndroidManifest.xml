@@ -8,6 +8,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/logo"
         android:label="@string/app_name"
+        android:name=".base.RTCRApplication"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.RTExchangeRateActivity">
