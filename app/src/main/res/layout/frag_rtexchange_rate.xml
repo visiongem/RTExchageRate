@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <android.support.v4.widget.SwipeRefreshLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/refresh_rate"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -23,15 +23,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:text="人民币"
+                android:paddingRight="10dp"
+                android:text="CNY"
                 android:textColor="@color/txt_dark"
                 android:textSize="@dimen/font_Subhead_device"/>
-
-            <ImageView
-                android:layout_width="@dimen/md_icon_size_24"
-                android:layout_height="@dimen/md_icon_size_24"
-                android:layout_marginLeft="@dimen/margin_8"
-                android:src="@mipmap/ic_arrow_right"/>
 
             <com.pyn.rtexchagerate.view.ClearEditText
                 android:id="@+id/cedt_one_num"
@@ -59,7 +54,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:text="美元"
+                android:paddingRight="10dp"
+                android:text="EUR"
                 android:textColor="@color/txt_dark"
                 android:textSize="@dimen/font_Subhead_device"/>
 
@@ -72,6 +68,17 @@
                 android:textSize="@dimen/font_Subhead_device"/>
 
         </LinearLayout>
+
+        <com.pyn.rtexchagerate.view.MyKeyboardView
+            android:id="@+id/keyboard_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:keyTextColor="@color/white"
+            android:visibility="visible" />
     </FrameLayout>
 </android.support.v4.widget.SwipeRefreshLayout>
 
