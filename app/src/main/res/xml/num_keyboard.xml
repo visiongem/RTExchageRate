@@ -13,6 +13,9 @@
         <Key
             android:codes="57"
             android:keyLabel="9"/>
+        <Key
+            android:keyEdgeFlags="right"
+            android:keyLabel="AC"/>
 
     </Row>
     <Row>
@@ -26,9 +29,6 @@
         <Key
             android:codes="54"
             android:keyLabel="6"/>
-        <Key
-            android:keyLabel="AC"/>
-
     </Row>
     <Row>
         <Key
@@ -60,6 +60,7 @@
         <Key
             android:codes="-5"
             android:isRepeatable="true"
+            android:keyEdgeFlags="right"
             android:keyLabel="退格"
             android:keyWidth="25%p"/>
     </Row>

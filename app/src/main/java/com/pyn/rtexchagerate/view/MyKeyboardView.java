@@ -29,7 +29,7 @@ public class MyKeyboardView extends KeyboardView {
                 R.xml.num_keyboard);
         setKeyboard(keyboard);
         setEnabled(true);
-        setPreviewEnabled(false);
+        setPreviewEnabled(true);
     }
 
     @Override

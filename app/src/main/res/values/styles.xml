@@ -8,4 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="key_txt">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/txt_dark</item>
+        <item name="android:textSize">@dimen/font_Headline</item>
+        <item name="android:background">@drawable/selector_rec_trans2gray</item>
+        <item name="android:paddingTop">18dp</item>
+        <item name="android:paddingBottom">18dp</item>
+    </style>
+
 </resources>
