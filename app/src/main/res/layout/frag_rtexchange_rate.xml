@@ -69,12 +69,6 @@
 
         </LinearLayout>
 
-        <com.pyn.rtexchagerate.view.MyKeyboardView
-            android:id="@+id/keyboard_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|bottom"
-             />
     </FrameLayout>
 </android.support.v4.widget.SwipeRefreshLayout>
 

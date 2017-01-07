@@ -44,6 +44,7 @@ dependencies {
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
-    // 安全简单的键值对数据存储库。使用AES来加密私密数据，SharedPreferences来存储。可以存储任意类型的数据或者数据集合(List)。
+    // 安全简单的键值对数据存储库
+    // 。使用AES来加密私密数据，SharedPreferences来存储。可以存储任意类型的数据或者数据集合(List)。
     compile 'com.orhanobut:hawk:2.0.1'
 }
