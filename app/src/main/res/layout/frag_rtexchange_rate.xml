@@ -9,27 +9,26 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gray1"
-        android:padding="@dimen/margin_16">
+        android:background="@color/gray1">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/margin_vertical_72"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:padding="@dimen/margin_16"
+            android:gravity="center_vertical">
 
             <TextView
                 android:id="@+id/tv_one_name"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:paddingRight="10dp"
+                android:paddingRight="15dp"
                 android:text="CNY"
                 android:textColor="@color/txt_dark"
                 android:textSize="@dimen/font_Subhead_device"/>
 
-            <com.pyn.rtexchagerate.view.ClearEditText
-                android:id="@+id/cedt_one_num"
+            <EditText
+                android:id="@+id/edt_one_num"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@null"
@@ -42,32 +41,47 @@
 
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="@dimen/margin_vertical_72"
+            android:background="@color/gray2"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/margin_vertical_72"
-            android:layout_marginTop="@dimen/margin_vertical_72"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_marginTop="72.5dp"
+            android:padding="@dimen/margin_16"
+            android:gravity="center_vertical">
 
             <TextView
                 android:id="@+id/tv_two_name"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:paddingRight="10dp"
+                android:paddingRight="15dp"
                 android:text="EUR"
                 android:textColor="@color/txt_dark"
                 android:textSize="@dimen/font_Subhead_device"/>
 
-            <TextView
-                android:id="@+id/tv_two_num"
+            <EditText
+                android:id="@+id/edt_two_num"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@null"
                 android:gravity="center_vertical|end"
+                android:inputType="number"
+                android:maxLength="12"
                 android:textColor="@color/txt_dark"
+                android:textCursorDrawable="@null"
                 android:textSize="@dimen/font_Subhead_device"/>
 
         </LinearLayout>
+
+        <com.pyn.rtexchagerate.view.MyKeyboardView
+            android:layout_width="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_height="wrap_content" />
 
     </FrameLayout>
 </android.support.v4.widget.SwipeRefreshLayout>

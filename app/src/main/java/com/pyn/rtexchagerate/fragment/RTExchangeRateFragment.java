@@ -1,26 +1,26 @@
 package com.pyn.rtexchagerate.fragment;
 
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.view.View;
+import android.text.InputType;
+import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.pyn.rtexchagerate.R;
 import com.pyn.rtexchagerate.utils.ToastMaker;
-import com.pyn.rtexchagerate.view.ClearEditText;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 public class RTExchangeRateFragment extends BaseFragment {
 
     @BindView(R.id.tv_one_name)
-    TextView tvOneName;
+    TextView oneNameTv;
     @BindView(R.id.tv_two_name)
-    TextView tvTwoName;
-    @BindView(R.id.cedt_one_num)
-    ClearEditText cedtOneNum;
-    @BindView(R.id.tv_two_num)
-    TextView tvTwoNum;
+    TextView twoNameTV;
+    @BindView(R.id.edt_one_num)
+    EditText oneNumEdt;
+    @BindView(R.id.edt_two_num)
+    EditText twoNumEdt;
     @BindView(R.id.refresh_rate)
     SwipeRefreshLayout swipeRefresh;
 
@@ -36,6 +36,9 @@ public class RTExchangeRateFragment extends BaseFragment {
 
     @Override
     protected void initData() {
+
+        hideSoftInputMethod(oneNumEdt);
+        hideSoftInputMethod(twoNumEdt);
 
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -53,15 +56,37 @@ public class RTExchangeRateFragment extends BaseFragment {
         swipeRefresh.setRefreshing(false);
     }
 
-    @OnClick({R.id.tv_one_name, R.id.tv_two_name})
-    public void viewsOnclick(View view) {
-        switch (view.getId()) {
-            case R.id.tv_one_name:
-                break;
+    /**
+     * Edittext 隐藏系统弹出的键盘,显示出光标
+     * @param editText
+     */
+    public void hideSoftInputMethod(EditText editText) {
 
-            case R.id.tv_two_name:
-                break;
+        mActivity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        int currentVersion = android.os.Build.VERSION.SDK_INT;
+        String methodName = null;
+        if (currentVersion >= 16) {
+            // 4.2
+            methodName = "setShowSoftInputOnFocus";
+            // 19 setShowSoftInputOnFocus
+        } else if (currentVersion >= 14) {
+            // 4.0
+            methodName = "setSoftInputShownOnFocus";
+        }
 
+        if (methodName == null) {
+            editText.setInputType(InputType.TYPE_NULL);
+        } else {
+            Class<TextView> cls = TextView.class;
+            java.lang.reflect.Method setShowSoftInputOnFocus;
+            try {
+                setShowSoftInputOnFocus = cls.getMethod(methodName, boolean.class);
+                setShowSoftInputOnFocus.setAccessible(true);
+                setShowSoftInputOnFocus.invoke(editText, false);
+            } catch (Exception e) {
+                editText.setInputType(InputType.TYPE_NULL);
+                e.printStackTrace();
+            }
         }
     }
 }

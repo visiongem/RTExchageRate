@@ -5,6 +5,7 @@ import android.app.Application;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 
+import com.antfortune.freeline.FreelineCore;
 import com.orhanobut.hawk.Hawk;
 import com.orhanobut.logger.Logger;
 
@@ -29,15 +30,15 @@ public class RTCRApplication extends Application {
 
     @Override
     public void onCreate() {
+        FreelineCore.init(this);
         super.onCreate();
-
         // 初始化hawk数据存储
         Hawk.init(this).build();
 
         if (mInstance == null) {
+            Logger.d(this);
             mInstance = this;
         }
-
         // 得到屏幕宽度和高度
         DisplayMetrics dm = getResources().getDisplayMetrics();
         screenW = dm.widthPixels;
