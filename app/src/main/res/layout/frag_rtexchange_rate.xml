@@ -19,25 +19,12 @@
 
             <TextView
                 android:id="@+id/tv_one_name"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:paddingRight="15dp"
-                android:text="CNY"
-                android:textColor="@color/txt_dark"
-                android:textSize="@dimen/font_Subhead_device"/>
+                style="@style/txt_country"
+                android:text="CNY"/>
 
             <EditText
                 android:id="@+id/edt_one_num"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:gravity="center_vertical|end"
-                android:inputType="number"
-                android:maxLength="12"
-                android:textColor="@color/txt_dark"
-                android:textCursorDrawable="@null"
-                android:textSize="@dimen/font_Subhead_device"/>
+                style="@style/edt_rate_num"/>
 
         </LinearLayout>
 
@@ -56,25 +43,12 @@
 
             <TextView
                 android:id="@+id/tv_two_name"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:paddingRight="15dp"
-                android:text="EUR"
-                android:textColor="@color/txt_dark"
-                android:textSize="@dimen/font_Subhead_device"/>
+                style="@style/txt_country"
+                android:text="EUR"/>
 
             <EditText
                 android:id="@+id/edt_two_num"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:gravity="center_vertical|end"
-                android:inputType="number"
-                android:maxLength="12"
-                android:textColor="@color/txt_dark"
-                android:textCursorDrawable="@null"
-                android:textSize="@dimen/font_Subhead_device"/>
+                style="@style/edt_rate_num"/>
 
         </LinearLayout>
 

@@ -14,6 +14,7 @@
     <dimen name="font_Display1">34sp</dimen>
     <dimen name="font_Headline">24sp</dimen>
     <dimen name="font_Title">20sp</dimen>
+    <dimen name="font18">18sp</dimen>
     <dimen name="font_Subhead_device">16sp</dimen>
     <dimen name="font_Subhead_desktop">15sp</dimen>
     <dimen name="font_Body2">14sp</dimen>
