@@ -14,8 +14,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/margin_vertical_72"
-            android:padding="@dimen/margin_16"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:padding="@dimen/margin_16">
 
             <TextView
                 android:id="@+id/tv_one_name"
@@ -51,8 +51,8 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/margin_vertical_72"
             android:layout_marginTop="72.5dp"
-            android:padding="@dimen/margin_16"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:padding="@dimen/margin_16">
 
             <TextView
                 android:id="@+id/tv_two_name"
@@ -78,11 +78,11 @@
 
         </LinearLayout>
 
-        <com.pyn.rtexchagerate.view.MyKeyboardView
-            android:id="@+id/view_keyboard"
+        <include
+            layout="@layout/layout_key"
             android:layout_width="match_parent"
-            android:layout_gravity="bottom"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"/>
 
     </FrameLayout>
 </android.support.v4.widget.SwipeRefreshLayout>

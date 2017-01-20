@@ -9,9 +9,9 @@ import android.widget.TextView;
 
 import com.pyn.rtexchagerate.R;
 import com.pyn.rtexchagerate.utils.ToastMaker;
-import com.pyn.rtexchagerate.view.MyKeyboardView;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class RTExchangeRateFragment extends BaseFragment {
 
@@ -25,8 +25,6 @@ public class RTExchangeRateFragment extends BaseFragment {
     EditText twoNumEdt;
     @BindView(R.id.refresh_rate)
     SwipeRefreshLayout swipeRefresh;
-    @BindView(R.id.view_keyboard)
-    MyKeyboardView mKeyboardView;
 
     public static RTExchangeRateFragment newInstance() {
         RTExchangeRateFragment fragment = new RTExchangeRateFragment();
@@ -43,18 +41,58 @@ public class RTExchangeRateFragment extends BaseFragment {
 
         hideSoftInputMethod(oneNumEdt);
         hideSoftInputMethod(twoNumEdt);
-        mKeyboardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ToastMaker.showShortToast("dianjile key");
-            }
-        });
+
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 refreshDatas();
             }
         });
+    }
+
+    @OnClick({R.id.btn_0, R.id.btn_1, R.id.btn_2, R.id.btn_3, R.id.btn_4, R.id.btn_5, R.id.btn_6, R.id.btn_7, R.id.btn_8, R.id.btn_9, R.id.btn_ac, R.id.btn_point, R.id.ibtn_delete})
+    public void numsOnClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_0:
+                ToastMaker.showShortToast("0");
+                break;
+            case R.id.btn_1:
+                ToastMaker.showShortToast("1");
+                break;
+            case R.id.btn_2:
+                ToastMaker.showShortToast("2");
+                break;
+            case R.id.btn_3:
+                ToastMaker.showShortToast("3");
+                break;
+            case R.id.btn_4:
+                ToastMaker.showShortToast("4");
+                break;
+            case R.id.btn_5:
+                ToastMaker.showShortToast("5");
+                break;
+            case R.id.btn_6:
+                ToastMaker.showShortToast("6");
+                break;
+            case R.id.btn_7:
+                ToastMaker.showShortToast("7");
+                break;
+            case R.id.btn_8:
+                ToastMaker.showShortToast("8");
+                break;
+            case R.id.btn_9:
+                ToastMaker.showShortToast("9");
+                break;
+            case R.id.btn_ac:
+                ToastMaker.showShortToast("ac");
+                break;
+            case R.id.btn_point:
+                ToastMaker.showShortToast("point");
+                break;
+            case R.id.ibtn_delete:
+                ToastMaker.showShortToast("delete");
+                break;
+        }
     }
 
     /**
@@ -67,6 +105,7 @@ public class RTExchangeRateFragment extends BaseFragment {
 
     /**
      * Edittext 隐藏系统弹出的键盘,显示出光标
+     *
      * @param editText
      */
     public void hideSoftInputMethod(EditText editText) {
