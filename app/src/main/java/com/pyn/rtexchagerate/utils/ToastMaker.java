@@ -103,7 +103,7 @@ public class ToastMaker {
                 View layout = inflater.inflate(R.layout.common_toast, null);
                 sContentTv = (TextView) layout.findViewById(R.id.tv_toast_content);
                 sContentTv.setText(msg);
-                sToast.setGravity(Gravity.CENTER, 0, RTCRApplication.getInstance().screenH / 4);
+                sToast.setGravity(Gravity.CENTER, 0, RTCRApplication.screenH / 4);
                 sToast.setDuration(duration);
                 sToast.setView(layout);
             }else {

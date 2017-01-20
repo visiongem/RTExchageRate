@@ -45,6 +45,11 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     // 安全简单的键值对数据存储库
-    // 。使用AES来加密私密数据，SharedPreferences来存储。可以存储任意类型的数据或者数据集合(List)。
+    // 使用AES来加密私密数据，SharedPreferences来存储。可以存储任意类型的数据或者数据集合(List)。
     compile 'com.orhanobut:hawk:2.0.1'
+
+    // https://github.com/square/leakcanary 内存泄露自动探测神器
+//    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+//    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+//    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
 }

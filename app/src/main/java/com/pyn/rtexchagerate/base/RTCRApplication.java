@@ -2,6 +2,7 @@ package com.pyn.rtexchagerate.base;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 
@@ -18,14 +19,14 @@ public class RTCRApplication extends Application {
 
     private static final String TAG = "RTCRApplication";
 
-    private static RTCRApplication mInstance;
+    private static Context mContext;
     // 当前屏幕的宽度
-    public int screenW = 0;
-    public int screenH = 0;
+    public static int screenW = 0;
+    public static int screenH = 0;
 
-    // 获取Application实例
-    public static RTCRApplication getInstance(){
-        return mInstance;
+    // 获取全局的Context
+    public static Context getContext(){
+        return mContext;
     }
 
     @Override
@@ -34,11 +35,15 @@ public class RTCRApplication extends Application {
         super.onCreate();
         // 初始化hawk数据存储
         Hawk.init(this).build();
+//
+//        if (LeakCanary.isInAnalyzerProcess(this)) {
+//            // This process is dedicated to LeakCanary for heap analysis.
+//            // You should not init your app in this process.
+//            return;
+//        }
+//        LeakCanary.install(this);
 
-        if (mInstance == null) {
-            Logger.d(this);
-            mInstance = this;
-        }
+        mContext = getApplicationContext();
         // 得到屏幕宽度和高度
         DisplayMetrics dm = getResources().getDisplayMetrics();
         screenW = dm.widthPixels;

@@ -25,7 +25,7 @@ import com.pyn.rtexchagerate.base.RTCRApplication;
 public class UIUtils {
 
     public static Context getContext() {
-        return RTCRApplication.getInstance();
+        return RTCRApplication.getContext();
     }
 
     /**

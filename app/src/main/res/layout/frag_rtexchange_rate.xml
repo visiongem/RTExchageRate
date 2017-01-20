@@ -79,6 +79,7 @@
         </LinearLayout>
 
         <com.pyn.rtexchagerate.view.MyKeyboardView
+            android:id="@+id/view_keyboard"
             android:layout_width="match_parent"
             android:layout_gravity="bottom"
             android:layout_height="wrap_content" />

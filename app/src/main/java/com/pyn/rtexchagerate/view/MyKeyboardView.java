@@ -158,6 +158,11 @@ public class MyKeyboardView extends LinearLayout implements View.OnClickListener
         return !childClickable;
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return super.onTouchEvent(event);
+    }
+
     public void setChildClickable(boolean clickable) {
         childClickable = clickable;
     }

@@ -2,12 +2,14 @@ package com.pyn.rtexchagerate.fragment;
 
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.InputType;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.pyn.rtexchagerate.R;
 import com.pyn.rtexchagerate.utils.ToastMaker;
+import com.pyn.rtexchagerate.view.MyKeyboardView;
 
 import butterknife.BindView;
 
@@ -23,6 +25,8 @@ public class RTExchangeRateFragment extends BaseFragment {
     EditText twoNumEdt;
     @BindView(R.id.refresh_rate)
     SwipeRefreshLayout swipeRefresh;
+    @BindView(R.id.view_keyboard)
+    MyKeyboardView mKeyboardView;
 
     public static RTExchangeRateFragment newInstance() {
         RTExchangeRateFragment fragment = new RTExchangeRateFragment();
@@ -39,7 +43,12 @@ public class RTExchangeRateFragment extends BaseFragment {
 
         hideSoftInputMethod(oneNumEdt);
         hideSoftInputMethod(twoNumEdt);
-
+        mKeyboardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ToastMaker.showShortToast("dianjile key");
+            }
+        });
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
