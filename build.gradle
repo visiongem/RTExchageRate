@@ -5,7 +5,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.android.tools.build:gradle:2.3.0-rc1'
         classpath 'com.jakewharton:butterknife-gradle-plugin:8.4.0'
         // freeline Android平台上的量身定做的一个基于动态替换的编译方案
         classpath 'com.antfortune.freeline:gradle:0.8.4'
